@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-CREATE DATABASE gouniv;
+CREATE DATABASE go_univ;
 
 CREATE USER admin;
 
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS staff(
 
 CREATE TABLE IF NOT EXISTS student(
 	student_id serial PRIMARY KEY,
-	Name VARCHAR(30) UNIQUE NOT NULL,
+	name VARCHAR(30) UNIQUE NOT NULL,
 	province VARCHAR(30),
 	staff_no INT,
 	FOREIGN KEY (staff_no) REFERENCES staff(staff_no)
@@ -54,8 +54,6 @@ CREATE TABLE IF NOT EXISTS assignment(
 
 ALTER DATABASE gouniv OWNER  TO admin;
 
-REVOKE ALL PRIVILEGES ON DATABASE gouniv FROM PUBLIC;
-
 GRANT ALL PRIVILEGES ON TABLE student, Course TO agent;
 
 GRANT SELECT ON TABLE staff TO agent;
@@ -64,11 +62,11 @@ GRANT SELECT ON TABLE student, course TO etudiant;
 
 GRANT CONNECT ON DATABASE gouniv TO agent, etudiant;
 
-INSERT INTO staff(nom, province) VALUES ('Alexis Senga', 'Sud-kivu'), ('Senga Ngabo', 'Kasai'), ('Alexis Ngabo', 'Nord-kivu'), ('Senga Ngabo', 'Equateur'), ('Alexis Bahati Senga', 'Ituri'), ('Bahati Senga', 'Bandundu'), ('Alexis Baraka Senga', 'Kinshasa');
+INSERT INTO staff(name, province) VALUES ('Alexis Senga', 'Sud-kivu'), ('Senga Ngabo', 'Kasai'), ('Alexis Ngabo', 'Nord-kivu'), ('Senga Ngabo', 'Equateur'), ('Alexis Bahati Senga', 'Ituri'), ('Bahati Senga', 'Bandundu'), ('Alexis Baraka Senga', 'Kinshasa');
 
 INSERT INTO student(name, province, staff_no) VALUES ('Junior Baraka','Maniema', 1), ('Junior Baraka2','Maniema', 1), ('Junior Baraka3','Maniema', 1), ('Junior Baraka4','Maniema', 1), ('Junior Baraka5','Maniema', 1);
 
-INSERT INTO course(titre, credit, quota, staff_no) VALUES ('Informatique', 6, 4, 1), ('Mathematique', 6, 4, 1), ('Histoire', 6, 4, 1), ('Dessin', 6, 4, 1), ('Physique', 6, 4, 1);
+INSERT INTO course(titre, credit, quota, staff_no) VALUES ('Informatique', 1, 1, 1), ('Mathematique', 1, 1, 1), ('Histoire', 1, 1, 1), ('Dessin', 1, 1, 1), ('Physique', 1, 1, 1);
 
 INSERT INTO enrollment(student_id, course_code, final_grade) VALUES (1, 1, 2);
 
