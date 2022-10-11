@@ -11,7 +11,7 @@ CREATE USER etudiant;
 CREATE TABLE IF NOT EXISTS staff(
 	staff_no serial PRIMARY KEY,
 	name VARCHAR(30) UNIQUE NOT NULL,
-	province VARCHAR(30)
+	province VARCHAR(20)
 );
 
 CREATE TABLE IF NOT EXISTS student(
